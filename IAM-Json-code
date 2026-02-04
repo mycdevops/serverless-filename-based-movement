@@ -1,0 +1,28 @@
+Jason Code for inline policy to assign role for Lambda to move files from source to destination buckets
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::bucket1-source0302/*",
+                "arn:aws:s3:::bucket2-fin-files/*",
+                "arn:aws:s3:::bucket3-other-files/*"
+            ]
+        }
+    ]
+}
